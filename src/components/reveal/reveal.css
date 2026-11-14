@@ -1,0 +1,111 @@
+/*
+ * Every effect below only hides content when scripts run and motion is
+ * welcome, so without JavaScript or with reduced motion the page reads as is.
+ */
+:root {
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Rise: titles, word by word out of a mask ---- */
+
+/* Padding gives ascenders, descenders and italic overhang room inside the
+   mask, and the matching negative margin keeps the line spacing untouched. */
+.rise-mask {
+  --rise-pad-top: 0.12em;
+  --rise-pad-bottom: 0.2em;
+  display: inline-block;
+  overflow: clip;
+  padding: var(--rise-pad-top) 0.08em var(--rise-pad-bottom);
+  margin: calc(var(--rise-pad-top) * -1) -0.08em
+    calc(var(--rise-pad-bottom) * -1);
+  /* Same font and line height as the title, so top alignment matches the baseline. */
+  vertical-align: top;
+}
+
+.rise-word {
+  display: inline-block;
+}
+
+/* ---- Scroll text: display paragraphs, brightened by scroll ---- */
+
+.scroll-text {
+  --dim: 0.15;
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal="rise"] .rise-word {
+    transition: transform 0.9s var(--reveal-ease);
+    /* Capped, so a long title never leaves its last words waiting. */
+    transition-delay: calc(min(var(--i), 10) * 45ms);
+  }
+
+  [data-reveal="rise"]:not([data-revealed]) .rise-word {
+    transform: translateY(
+      calc(100% + var(--rise-pad-top) + var(--rise-pad-bottom))
+    );
+  }
+
+  /* ---- Unblur: descriptions come into focus ---- */
+  [data-reveal="unblur"] {
+    transition:
+      opacity 0.9s var(--reveal-ease),
+      filter 0.9s var(--reveal-ease);
+    /* Lets the title next to it start rising first. */
+    transition-delay: 0.15s;
+  }
+
+  [data-reveal="unblur"]:not([data-revealed]) {
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  .scroll-word {
+    opacity: clamp(
+      var(--dim),
+      calc(
+        var(--dim) +
+        (1 - var(--dim)) *
+        (var(--progress) - var(--start)) /
+        var(--window)
+      ),
+      1
+    );
+  }
+}
+
+/* ---- Roll: button labels on hover and keyboard focus ---- */
+
+.roll {
+  display: inline-grid;
+  overflow: clip;
+}
+
+.roll-label {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition: transform 0.3s cubic-bezier(0.338, 0.015, 0.395, 0.959);
+}
+
+.roll-copy {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :focus-visible > .roll > .roll-label {
+    transform: translateY(100%);
+  }
+
+  :focus-visible > .roll > .roll-copy {
+    transform: none;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :hover > .roll > .roll-label {
+    transform: translateY(100%);
+  }
+
+  :hover > .roll > .roll-copy {
+    transform: none;
+  }
+}
