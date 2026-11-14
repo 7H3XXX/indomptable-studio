@@ -1,0 +1,33 @@
+/* The header is clear over the hero, then settles onto ink as the page scrolls. */
+@supports (animation-timeline: scroll()) {
+  .header-settle {
+    animation: header-settle linear both;
+    animation-timeline: scroll();
+    animation-range: 0 60svh;
+  }
+}
+
+@keyframes header-settle {
+  to {
+    background-color: rgb(22 22 22 / 0.9);
+    border-color: rgb(245 240 232 / 0.1);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* The header's call to action waits until the hero's has scrolled away, so
+   the first screen never shows the same button twice. */
+@supports (animation-timeline: scroll()) {
+  .header-cta {
+    animation: header-cta linear both;
+    animation-timeline: scroll();
+    animation-range: 50svh 70svh;
+  }
+}
+
+@keyframes header-cta {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
