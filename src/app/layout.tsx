@@ -25,7 +25,10 @@ const syneMono = Syne_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Indomptable, digital transformation studio",
+  title: {
+    default: "Indomptable, digital transformation studio",
+    template: "%s | Indomptable",
+  },
   description:
     "We transform established businesses into digital leaders with strategy, technology and data.",
 };

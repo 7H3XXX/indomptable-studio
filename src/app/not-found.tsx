@@ -7,7 +7,7 @@ import { container, eyebrow, heading } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Page not found | Indomptable",
+  title: "Page not found",
 };
 
 export default function NotFound() {
