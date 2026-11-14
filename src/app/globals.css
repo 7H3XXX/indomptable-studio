@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "../components/reveal/reveal.css";
+
+/* The page is dark. Sections marked .light switch to bone. */
+@custom-variant dark (&:is(.dark *):not(:where(.light, .light *)));
+
+/* Base UI marks orientation with one attribute instead of two. */
+@custom-variant data-horizontal (&[data-orientation="horizontal"]);
+@custom-variant data-vertical (&[data-orientation="vertical"]);
+
+@theme inline {
+  --font-sans: var(--font-general);
+  --font-serif: var(--font-instrument);
+  --font-mono: var(--font-syne-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Base UI accordion panels, as shadcn expects them. */
+@theme {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--accordion-panel-height, auto);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--accordion-panel-height, auto);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+:root {
+  --violet: #a78bfa;
+  --volt: #e8ff00;
+  --ink: #161616;
+  --bone: #f5f0e8;
+  --radius: 0.25rem;
+
+  --background: var(--ink);
+  --foreground: var(--bone);
+  --card: #1e1e1e;
+  --card-foreground: var(--bone);
+  --popover: #1e1e1e;
+  --popover-foreground: var(--bone);
+  --primary: var(--volt);
+  --primary-foreground: var(--ink);
+  --secondary: #262626;
+  --secondary-foreground: var(--bone);
+  --muted: #262626;
+  --muted-foreground: rgb(245 240 232 / 0.62);
+  --accent: #262626;
+  --accent-foreground: var(--bone);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgb(245 240 232 / 0.14);
+  --input: rgb(245 240 232 / 0.22);
+  --ring: var(--violet);
+}
+
+.light {
+  --background: var(--bone);
+  --foreground: var(--ink);
+  --card: #fbf8f3;
+  --card-foreground: var(--ink);
+  --popover: #fbf8f3;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bone);
+  --secondary: #ebe4d8;
+  --secondary-foreground: var(--ink);
+  --muted: #ebe4d8;
+  --muted-foreground: rgb(22 22 22 / 0.64);
+  --accent: #ebe4d8;
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgb(22 22 22 / 0.14);
+  --input: rgb(22 22 22 / 0.24);
+  --ring: #7c5ce0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply motion-safe:scroll-smooth;
+  }
+
+  body,
+  .light {
+    @apply bg-background text-foreground;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+}
