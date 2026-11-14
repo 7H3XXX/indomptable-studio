@@ -1,0 +1,44 @@
+/* The rail fills as each step crosses the middle of the viewport. */
+@supports (animation-timeline: view()) {
+  .process-segment {
+    view-timeline: --process-segment block;
+    view-timeline-inset: 50%;
+  }
+
+  .process-fill {
+    transform-origin: top;
+    animation: process-grow linear both;
+    animation-timeline: --process-segment;
+  }
+
+  .process-step {
+    animation: process-light linear both;
+    animation-timeline: view(block 50%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process-fill,
+    .process-step {
+      animation: none;
+    }
+  }
+}
+
+@keyframes process-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Steps below the middle of the screen wait in a muted tone. */
+@keyframes process-light {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
