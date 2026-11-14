@@ -1,12 +1,17 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
  * One IntersectionObserver for every [data-reveal] element on the page. Each
- * element is marked once and dropped, and the CSS does the animating.
+ * element is marked once and dropped, and the CSS does the animating. It lives
+ * in the layout, so it rescans on every navigation.
  */
 export const RevealObserver = () => {
+  const pathname = usePathname();
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: a new path means new elements to observe.
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -28,7 +33,7 @@ export const RevealObserver = () => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 };

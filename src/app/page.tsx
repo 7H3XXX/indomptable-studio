@@ -1,6 +1,5 @@
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { RevealObserver } from "@/components/reveal/reveal-observer";
 import { Contact } from "@/components/sections/contact/contact";
 import { Hero } from "@/components/sections/hero";
 import { Mission } from "@/components/sections/mission";
@@ -25,7 +24,6 @@ export default function HomePage() {
         <Contact />
       </main>
       <Footer />
-      <RevealObserver />
     </>
   );
 }

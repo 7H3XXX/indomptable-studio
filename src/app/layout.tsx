@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Syne_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import { RevealObserver } from "@/components/reveal/reveal-observer";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -44,7 +45,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
       lang="en"
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <RevealObserver />
+      </body>
     </html>
   );
 }
