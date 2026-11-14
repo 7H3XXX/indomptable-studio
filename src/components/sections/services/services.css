@@ -1,0 +1,20 @@
+/*
+ * The pinned stage needs a wide, landscape screen tall enough to hold it, and
+ * motion. Everything else gets the accordion. One query decides both, so the
+ * two versions can never show together or both go missing.
+ */
+.services-scroll {
+  display: none;
+}
+
+@media (min-width: 64rem) and (orientation: landscape) and (
+    min-height: 45rem
+  ) and (prefers-reduced-motion: no-preference) {
+  .services-accordion {
+    display: none;
+  }
+
+  .services-scroll {
+    display: block;
+  }
+}
