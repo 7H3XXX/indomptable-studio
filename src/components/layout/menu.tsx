@@ -87,7 +87,7 @@ export const Menu = () => {
               <ul className="group/list grid">
                 {links.map(({ label, href }) => (
                   <li key={href}>
-                    <a
+                    <Link
                       className={cn(
                         serif,
                         "flex items-baseline py-2 text-5xl transition-colors group-hover/list:text-foreground/30 hover:text-foreground! sm:text-7xl lg:text-8xl",
@@ -95,7 +95,7 @@ export const Menu = () => {
                       href={href}
                     >
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

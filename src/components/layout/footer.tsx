@@ -22,9 +22,9 @@ export const Footer = () => (
           <ul className="mt-4 grid gap-2">
             {links.map(({ label, href }) => (
               <li key={href}>
-                <a className={linkClassName} href={href}>
+                <Link className={linkClassName} href={href}>
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

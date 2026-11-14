@@ -8,9 +8,14 @@ import "./header.css";
 import { Logo } from "./logo";
 import { Menu } from "./menu";
 
+interface HeaderProps {
+  /** The section the page belongs to, marked in the nav. */
+  current?: string;
+}
+
 // The only header on the page. It stays above the menu sheet, whose own
 // trigger turns into its close button, so opening and closing never swaps it.
-export const Header = () => (
+export const Header = ({ current }: HeaderProps) => (
   <header className="group/header header-settle fixed inset-x-0 top-0 z-60 border-transparent border-b">
     <div className={cn(container, "flex h-18 items-center justify-between")}>
       <Link aria-label="Indomptable home" href="/">
@@ -20,12 +25,16 @@ export const Header = () => (
         <ul className="flex gap-10 text-base">
           {links.slice(0, 3).map(({ label, href }) => (
             <li key={href}>
-              <a
-                className="text-foreground/70 transition-colors hover:text-foreground"
+              <Link
+                aria-current={label === current || undefined}
+                className={cn(
+                  "text-foreground/70 transition-colors hover:text-foreground",
+                  label === current && "text-foreground",
+                )}
                 href={href}
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
