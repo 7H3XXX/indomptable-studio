@@ -212,6 +212,8 @@ export const projects: Project[] = [
   },
 ];
 
+export const featured = projects.slice(0, 3);
+
 export const getProject = (slug: string) =>
   projects.find((project) => project.slug === slug);
 

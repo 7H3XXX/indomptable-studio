@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RiseText } from "@/components/reveal/rise-text";
-import { projectImage, projects, tone } from "@/lib/projects";
+import { featured, projectImage, tone } from "@/lib/projects";
 import { container, eyebrow, heading, section, serif } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ export const Work = () => (
       </div>
 
       <div className="mt-16 grid gap-6 md:mt-24">
-        {projects.map(
+        {featured.map(
           ({
             slug,
             sector,
