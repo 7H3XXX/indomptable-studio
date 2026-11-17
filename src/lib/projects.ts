@@ -1,7 +1,16 @@
+import type { StaticImageData } from "next/image";
+
+/** An Unsplash photo id, or a screenshot of our own work. */
+export type Source = string | StaticImageData;
+
 export interface Photo {
-  /** An Unsplash photo id. */
-  id: string;
+  src: Source;
   alt: string;
+}
+
+export interface Choice {
+  title: string;
+  detail?: string;
 }
 
 export interface Project {
@@ -10,16 +19,21 @@ export interface Project {
   title: string;
   description: string;
   services: string[];
-  /** An Unsplash photo id. */
-  image: string;
+  image: Source;
   alt: string;
   /** An opaque background for the home page card, and its text color. */
   theme: string;
+  /** The page title, when "title for a sector" doesn't read. */
+  searchTitle?: string;
   situation: string;
-  approach: string[];
+  approach: string[] | { summary: string; choices: Choice[] };
   outcome: string;
-  /** One wide photo after the situation, then a pair after the approach. */
+  quote?: { text: string; author: string };
+  live?: string;
+  /** One wide frame after the situation, then a pair after the approach. */
   gallery: [Photo, Photo, Photo];
+  /** One wide frame, two landscapes or three portraits before the outcome. */
+  showcase?: Photo[];
 }
 
 // Draft case study copy. Replace with the real story and figures before launch.
@@ -45,15 +59,15 @@ export const projects: Project[] = [
       "The brand and the app now tell the same story, and the bank owns a design system its own teams extend without us.",
     gallery: [
       {
-        id: "photo-1460925895917-afdab827c52f",
+        src: "photo-1460925895917-afdab827c52f",
         alt: "A laptop on a desk showing a dashboard of charts and figures",
       },
       {
-        id: "photo-1563986768609-322da13575f3",
+        src: "photo-1563986768609-322da13575f3",
         alt: "Someone checking a phone in front of an open laptop",
       },
       {
-        id: "photo-1563013544-824ae1b704d3",
+        src: "photo-1563013544-824ae1b704d3",
         alt: "A hand holding a bank card over a laptop keyboard",
       },
     ],
@@ -79,15 +93,15 @@ export const projects: Project[] = [
       "The online store finally feels like the shops, and the team runs promotions and catalog changes on its own.",
     gallery: [
       {
-        id: "photo-1483985988355-763728e1935b",
+        src: "photo-1483985988355-763728e1935b",
         alt: "A shopper in a red coat carrying several shopping bags",
       },
       {
-        id: "photo-1472851294608-062f824d29cc",
+        src: "photo-1472851294608-062f824d29cc",
         alt: "An open sign hanging in a shop window",
       },
       {
-        id: "photo-1556742502-ec7c0e9f34b1",
+        src: "photo-1556742502-ec7c0e9f34b1",
         alt: "A card held over a white payment reader",
       },
     ],
@@ -113,15 +127,15 @@ export const projects: Project[] = [
       "The company runs on one system, and work moves between teams without anyone copying it by hand.",
     gallery: [
       {
-        id: "photo-1581091226825-a6a2a5aee158",
+        src: "photo-1581091226825-a6a2a5aee158",
         alt: "An engineer working on a laptop beside lab machinery",
       },
       {
-        id: "photo-1576091160550-2173dba999ef",
+        src: "photo-1576091160550-2173dba999ef",
         alt: "Hands typing on a laptop next to a stethoscope",
       },
       {
-        id: "photo-1556761175-5973dc0f32e7",
+        src: "photo-1556761175-5973dc0f32e7",
         alt: "A team gathered in an office for a presentation",
       },
     ],
@@ -136,5 +150,22 @@ export const nextProject = (project: Project) =>
   projects[(projects.indexOf(project) + 1) % projects.length] ?? project;
 
 /** Cropped to the height when one is given, as share images need. */
-export const projectImage = (id: string, width: number, height?: number) =>
-  `https://images.unsplash.com/${id}?w=${width}${height ? `&h=${height}&fit=crop` : ""}&q=80`;
+export function projectImage(
+  src: string,
+  width: number,
+  height?: number,
+): string;
+export function projectImage(
+  src: Source,
+  width: number,
+  height?: number,
+): Source;
+export function projectImage(src: Source, width: number, height?: number) {
+  return typeof src === "string"
+    ? `https://images.unsplash.com/${src}?w=${width}${height ? `&h=${height}&fit=crop` : ""}&q=80`
+    : src;
+}
+
+/** Photos are toned down, screenshots keep their color. */
+export const tone = (src: Source) =>
+  typeof src === "string" ? "grayscale-40" : undefined;

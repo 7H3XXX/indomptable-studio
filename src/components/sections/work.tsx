@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RiseText } from "@/components/reveal/rise-text";
-import { projectImage, projects } from "@/lib/projects";
+import { projectImage, projects, tone } from "@/lib/projects";
 import { container, eyebrow, heading, section, serif } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 
@@ -83,7 +83,7 @@ export const Work = () => (
                 <div className="relative aspect-2/1 overflow-hidden md:aspect-auto md:h-full">
                   <Image
                     alt={alt}
-                    className="object-cover grayscale-40"
+                    className={cn("object-cover", tone(image))}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
                     src={projectImage(image, 1400)}

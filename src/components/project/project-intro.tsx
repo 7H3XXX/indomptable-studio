@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { RiseText } from "@/components/reveal/rise-text";
-import { type Project, projectImage } from "@/lib/projects";
+import { type Project, projectImage, tone } from "@/lib/projects";
 import { container, eyebrow, serif } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 
@@ -38,7 +38,7 @@ export const ProjectIntro = ({ project }: { project: Project }) => (
     <div className="relative mt-16 aspect-4/3 overflow-hidden sm:aspect-video md:mt-20 lg:aspect-2/1">
       <Image
         alt={project.alt}
-        className="object-cover grayscale-40"
+        className={cn("object-cover", tone(project.image))}
         fill
         preload
         sizes="(min-width: 1440px) 1344px, 100vw"
@@ -46,7 +46,12 @@ export const ProjectIntro = ({ project }: { project: Project }) => (
       />
     </div>
 
-    <dl className="grid gap-8 border-b py-10 sm:grid-cols-2 md:py-12">
+    <dl
+      className={cn(
+        "grid gap-8 border-b py-10 sm:grid-cols-2 md:py-12",
+        project.live && "md:grid-cols-3",
+      )}
+    >
       <div>
         <dt className="text-muted-foreground text-sm">Sector</dt>
         <dd className="mt-2 text-lg">{project.sector}</dd>
@@ -55,6 +60,21 @@ export const ProjectIntro = ({ project }: { project: Project }) => (
         <dt className="text-muted-foreground text-sm">Services</dt>
         <dd className="mt-2 text-lg">{project.services.join(", ")}</dd>
       </div>
+      {project.live && (
+        <div>
+          <dt className="text-muted-foreground text-sm">Live</dt>
+          <dd className="mt-2 text-lg">
+            <a
+              className="underline decoration-foreground/30 underline-offset-4 transition-colors hover:decoration-foreground"
+              href={project.live}
+              rel="noopener"
+              target="_blank"
+            >
+              {new URL(project.live).host}
+            </a>
+          </dd>
+        </div>
+      )}
     </dl>
   </section>
 );

@@ -24,7 +24,13 @@ export const generateStaticParams = () =>
 
 // Names the client's sector, so the result says whose story it is.
 const pageTitle = (project: Project) =>
+  project.searchTitle ??
   `${project.title} for a ${project.sector.toLowerCase()}`;
+
+const shareImage = ({ image }: Project) =>
+  typeof image === "string"
+    ? projectImage(image, 1200, 630)
+    : new URL(image.src, url).href;
 
 export async function generateMetadata({
   params,
@@ -44,7 +50,7 @@ export async function generateMetadata({
       title: pageTitle(project),
       description: project.description,
       url: path,
-      images: { url: projectImage(project.image, 1200, 630), alt: project.alt },
+      images: { url: shareImage(project), alt: project.alt },
     },
   };
 }
@@ -68,10 +74,13 @@ export default async function ProjectPage({
         name: pageTitle(project),
         headline: project.title,
         description: project.description,
-        image: projectImage(project.image, 1200, 630),
+        image: shareImage(project),
         genre: "Case study",
         keywords: project.services.join(", "),
         creator: { "@id": studioId },
+        ...(project.live && {
+          about: { "@type": "WebSite", name: project.title, url: project.live },
+        }),
       },
       {
         "@type": "BreadcrumbList",
