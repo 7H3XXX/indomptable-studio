@@ -1,4 +1,10 @@
 import type { StaticImageData } from "next/image";
+import cover from "@/assets/enterprise-ui/cover.jpg";
+import hero from "@/assets/enterprise-ui/hero.webp";
+import renderHero from "@/assets/enterprise-ui/render-hero.webp";
+import pricing from "@/assets/enterprise-ui/spotlight-pricing.webp";
+import tabs from "@/assets/enterprise-ui/spotlight-tabs.webp";
+import stacking from "@/assets/enterprise-ui/stacking-cards.webp";
 
 /** An Unsplash photo id, or a screenshot of our own work. */
 export type Source = string | StaticImageData;
@@ -39,6 +45,69 @@ export interface Project {
 
 // Draft case study copy. Replace with the real story and figures before launch.
 export const projects: Project[] = [
+  {
+    slug: "enterprise-ui",
+    sector: "Developer tools",
+    title: "Enterprise UI",
+    description:
+      "Our own library of production-ready React blocks on shadcn and Base UI, for builders and teams who ship trust.",
+    services: ["Product", "Design", "Engineering"],
+    image: cover,
+    alt: "Hero, pricing, testimonial and feature blocks from Enterprise UI, laid out side by side",
+    theme: "bg-primary text-primary-foreground",
+    searchTitle: "Enterprise UI, production-ready React blocks",
+    situation:
+      "The web started to *look the same*. Landing pages, marketing sites, internal tools, all generated, all carrying the same flaws. Broken on mobile, closed to keyboards, careless in the details.",
+    approach: {
+      summary:
+        "Blocks and effects with the *usual concerns already solved*. Code quality, accessibility, responsiveness, dark mode. All of it *code teams own*.",
+      choices: [
+        {
+          title: "Built on shadcn and Base UI",
+          detail: "The stack most Next.js teams already maintain.",
+        },
+        { title: "Your code, not a dependency" },
+        { title: "Accessible by default" },
+        { title: "Every width, every theme" },
+        {
+          title: "Held to the standard of Linear, Vercel and Stripe",
+          detail:
+            "Teams whose design discipline shows in every product they ship.",
+        },
+      ],
+    },
+    outcome: "We *build with it* ourselves.",
+    // Placeholder on Enterprise UI too. Use it only with Dilane's permission.
+    quote: {
+      text: "I replaced two weeks of front-end work with an afternoon. The blocks looked finished on day one, and I spent the time on the product instead.",
+      author: "Dilane Kombou, creator of RasenganJS",
+    },
+    live: "https://enterprise-ui.indomptable.studio",
+    gallery: [
+      {
+        src: hero,
+        alt: "The Enterprise UI home page, headed Ship trust, not AI slop",
+      },
+      {
+        src: pricing,
+        alt: "The Spotlight Pricing block in the light theme",
+      },
+      {
+        src: stacking,
+        alt: "The Stacking Cards block in the dark theme, one card sliding over the last",
+      },
+    ],
+    showcase: [
+      {
+        src: renderHero,
+        alt: "The Render Hero block, a sculpted arc beside the headline",
+      },
+      {
+        src: tabs,
+        alt: "The Spotlight Tabs block, a mountain photo framed by its tabs",
+      },
+    ],
+  },
   {
     slug: "digital-bank",
     sector: "Digital bank",
