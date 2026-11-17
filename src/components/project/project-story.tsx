@@ -135,7 +135,7 @@ export const ProjectStory = ({ project }: { project: Project }) => {
           </div>
         )}
 
-        <Chapter title="Where it stands">
+        <Chapter title="The outcome">
           <p className={lede} data-reveal="unblur">
             {project.outcome}
           </p>
