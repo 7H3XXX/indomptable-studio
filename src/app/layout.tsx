@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Syne_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { RevealObserver } from "@/components/reveal/reveal-observer";
+import { description, openGraph, url } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -24,13 +25,15 @@ const syneMono = Syne_Mono({
   variable: "--font-syne-mono",
 });
 
+const title = "Indomptable, digital transformation studio";
+
+// Pages set their own canonical URL, so none is inherited by mistake.
 export const metadata: Metadata = {
-  title: {
-    default: "Indomptable, digital transformation studio",
-    template: "%s | Indomptable",
-  },
-  description:
-    "We transform established businesses into digital leaders with strategy, technology and data.",
+  metadataBase: new URL(url),
+  title: { default: title, template: "%s | Indomptable" },
+  description,
+  openGraph: { ...openGraph, title, description, url: "/" },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
