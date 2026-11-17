@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import { container, eyebrow, serif } from "@/lib/styles";
@@ -12,13 +11,14 @@ export const NextProject = ({ project }: { project: Project }) => (
       <p
         className={cn(
           serif,
-          "mt-6 flex items-center gap-6 text-5xl transition-colors group-hover:text-violet-400 md:text-7xl",
+          "mt-6 w-fit text-5xl transition-colors group-hover:text-violet-400 md:text-7xl",
         )}
       >
         {project.title}
-        <ArrowRight
+        {/* The same drawn rule as the work cards, in place of the old arrow. */}
+        <span
           aria-hidden="true"
-          className="size-10 shrink-0 transition-transform group-hover:translate-x-2 motion-reduce:transition-none md:size-14"
+          className="mt-2 block h-0.5 origin-left scale-x-0 bg-current will-change-[scale] transition-transform duration-500 group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none"
         />
       </p>
     </Link>
