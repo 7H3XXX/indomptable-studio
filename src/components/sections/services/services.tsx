@@ -4,8 +4,7 @@ import { Roll } from "@/components/reveal/roll";
 import { buttonVariants } from "@/components/ui/button";
 import { container, eyebrow, heading } from "@/lib/styles";
 import { cn } from "@/lib/utils";
-import { ServicesAccordion } from "./services-accordion";
-import { ServicesScroll } from "./services-scroll";
+import { ServicesList } from "./services-list";
 import "./services.css";
 
 export const Services = () => (
@@ -48,9 +47,6 @@ export const Services = () => (
       </div>
     </div>
 
-    <ServicesAccordion
-      className={cn(container, "services-accordion mt-12 pb-24 md:pb-36")}
-    />
-    <ServicesScroll className="services-scroll mt-8 pb-16" />
+    <ServicesList className="mt-12 pb-24 md:pb-36 stage:mt-8 stage:pb-16" />
   </section>
 );

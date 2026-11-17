@@ -1,20 +1,92 @@
-/*
- * The pinned stage needs a wide, landscape screen tall enough to hold it, and
- * motion. Everything else gets the accordion. One query decides both, so the
- * two versions can never show together or both go missing.
- */
-.services-scroll {
-  display: none;
-}
+@reference "../../../app/globals.css";
 
-@media (min-width: 64rem) and (orientation: landscape) and (
-    min-height: 45rem
-  ) and (prefers-reduced-motion: no-preference) {
-  .services-accordion {
-    display: none;
+/* ---- Small screens: an accordion that animates its height ---- */
+
+.services-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms ease-out;
+
+  /* Hidden only once closed, so closing still shows the text going. */
+  & > div {
+    min-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: visibility 200ms;
   }
 
-  .services-scroll {
+  [data-current] > & {
+    grid-template-rows: 1fr;
+
+    & > div {
+      visibility: visible;
+      transition-duration: 0s;
+    }
+  }
+
+  /* ---- The stage: every panel shares the cell under the list ---- */
+
+  @variant stage {
     display: block;
+    grid-area: -2 / 1 / -1 / 2;
+    margin-top: calc(var(--spacing) * 12);
+
+    & > div {
+      overflow: visible;
+      visibility: visible;
+    }
+
+    li:not([data-current]) > & {
+      pointer-events: none;
+    }
+  }
+}
+
+/* One row per service, then the row the panels share. */
+.services-list {
+  @variant stage {
+    grid-template-rows: repeat(var(--count), auto) auto;
+  }
+}
+
+/* The outgoing title clears before the incoming one rises. The padding gives
+   descenders room, so a full 100% shift leaves nothing inside the clip. */
+.services-title::before {
+  content: attr(data-title) / "";
+  display: block;
+  padding-bottom: calc(var(--spacing) * 3);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Written out flat, since nesting cannot stand in for a pseudo-element. */
+[data-placement="above"] .services-title::before {
+  transform: translateY(-100%);
+}
+
+[data-placement="shown"] .services-title::before {
+  transform: none;
+  transition: transform 0.7s var(--reveal-ease) 0.2s;
+}
+
+.services-description {
+  @variant stage {
+    opacity: 0;
+    transform: translateY(calc(var(--spacing) * 3));
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+
+    [data-placement="above"] & {
+      transform: none;
+    }
+
+    [data-placement="shown"] & {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity 0.5s var(--reveal-ease) 0.35s,
+        transform 0.5s var(--reveal-ease) 0.35s;
+    }
   }
 }
