@@ -1,23 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Chapter } from "@/components/chapter";
 import { buttonVariants } from "@/components/ui/button";
 import { type Photo, type Project, projectImage } from "@/lib/projects";
-import { container, eyebrow, section, serif } from "@/lib/styles";
+import { container, section, serif } from "@/lib/styles";
 import { cn } from "@/lib/utils";
-
-const Chapter = ({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}) => (
-  <div className="grid gap-6 border-t pt-10 md:grid-cols-12 md:gap-12">
-    <h2 className={cn(eyebrow, "self-start md:col-span-3 md:mt-2")}>{title}</h2>
-    <div className="md:col-span-9">{children}</div>
-  </div>
-);
 
 const Frame = ({
   photo,
