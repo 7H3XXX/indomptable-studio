@@ -23,5 +23,6 @@ export const links = [
   { label: "Services", href: "/#services" },
   { label: "Process", href: "/#process" },
   { label: "Work", href: "/#work" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "#contact" },
 ];

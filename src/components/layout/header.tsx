@@ -23,7 +23,8 @@ export const Header = ({ current }: HeaderProps) => (
       </Link>
       <nav aria-label="Sections" className="max-lg:hidden">
         <ul className="flex gap-10 text-base">
-          {links.slice(0, 3).map(({ label, href }) => (
+          {/* Contact is left to the call to action beside the nav. */}
+          {links.slice(0, -1).map(({ label, href }) => (
             <li key={href}>
               <Link
                 aria-current={label === current || undefined}
