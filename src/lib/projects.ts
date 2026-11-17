@@ -135,5 +135,6 @@ export const getProject = (slug: string) =>
 export const nextProject = (project: Project) =>
   projects[(projects.indexOf(project) + 1) % projects.length] ?? project;
 
-export const projectImage = (id: string, width: number) =>
-  `https://images.unsplash.com/${id}?w=${width}&q=80`;
+/** Cropped to the height when one is given, as share images need. */
+export const projectImage = (id: string, width: number, height?: number) =>
+  `https://images.unsplash.com/${id}?w=${width}${height ? `&h=${height}&fit=crop` : ""}&q=80`;
