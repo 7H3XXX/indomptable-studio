@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { type SubmitEvent, useId, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { useForm } from "react-hook-form";
@@ -147,6 +148,12 @@ export const InquiryForm = () => {
           <ArrowRight data-icon="inline-end" />
         </Button>
       </div>
+      <p className="mt-6 text-muted-foreground text-sm">
+        We only use these details to reply.{" "}
+        <Link className="underline underline-offset-4" href="/privacy">
+          Privacy policy
+        </Link>
+      </p>
     </div>
   );
 };

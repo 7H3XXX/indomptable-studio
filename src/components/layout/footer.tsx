@@ -48,7 +48,12 @@ export const Footer = () => (
 
       <div className="mt-12 flex flex-col gap-2 border-t py-8 text-muted-foreground text-sm sm:flex-row sm:justify-between">
         <p className={cn(serif, "text-lg")}>© Indomptable Studio</p>
-        <p>Working worldwide</p>
+        <div className="flex gap-6">
+          <p>Working worldwide</p>
+          <Link className={linkClassName} href="/privacy">
+            Privacy policy
+          </Link>
+        </div>
       </div>
     </div>
 
