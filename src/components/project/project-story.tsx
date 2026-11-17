@@ -167,7 +167,10 @@ export const ProjectStory = ({ project }: { project: Project }) => {
             </Link>
             {live && (
               <Link
-                className={buttonVariants({ size: "lg", variant: "outline" })}
+                // Merged, so the outline's border wins over the base transparent one.
+                className={cn(
+                  buttonVariants({ size: "lg", variant: "outline" }),
+                )}
                 href={live}
                 rel="noopener"
                 target="_blank"
