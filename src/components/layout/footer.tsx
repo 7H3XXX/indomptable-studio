@@ -18,7 +18,7 @@ export const Footer = () => (
           Strategy, technology and data for businesses that intend to lead.
         </p>
         <nav aria-label="Footer" className="md:col-span-3 md:col-start-7">
-          <h2 className="text-muted-foreground text-sm">Studio</h2>
+          <p className="text-muted-foreground text-sm">Studio</p>
           <ul className="mt-4 grid gap-2">
             {links.map(({ label, href }) => (
               <li key={href}>
@@ -30,18 +30,15 @@ export const Footer = () => (
           </ul>
         </nav>
         <div className="md:col-span-3">
-          <h2 className="text-muted-foreground text-sm">New business</h2>
+          <p className="text-muted-foreground text-sm">New business</p>
           <a
-            className={cn(linkClassName, "mt-4 inline-block")}
+            className={cn(linkClassName, "mt-4 block w-fit")}
             href={`mailto:${email}`}
           >
             {email}
           </a>
           <Link
-            className={buttonVariants({
-              size: "lg",
-              className: "mt-6 flex w-fit",
-            })}
+            className={buttonVariants({ size: "lg", className: "mt-6" })}
             href="#contact"
           >
             <Roll>Book a call</Roll>
