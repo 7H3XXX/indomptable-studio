@@ -25,6 +25,7 @@ export interface Project {
   theme: string;
   /** The page title, when "title for a sector" doesn't read. */
   searchTitle?: string;
+  /** *Asterisks* mark key terms, here, in the approach summary and outcome. */
   situation: string;
   approach: string[] | { summary: string; choices: Choice[] };
   outcome: string;

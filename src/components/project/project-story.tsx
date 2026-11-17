@@ -36,6 +36,18 @@ const Frame = ({
 
 const lede = cn(serif, "text-pretty text-3xl/tight md:text-4xl/tight");
 
+/** Violet-600, since violet-400 is too faint on the light page. */
+const Accent = ({ text }: { text: string }) =>
+  text.split(/\*(.+?)\*/).map((part, index) =>
+    index % 2 ? (
+      <em className="text-violet-600" key={part}>
+        {part}
+      </em>
+    ) : (
+      part
+    ),
+  );
+
 /** The case told in three chapters, with the work shown between them. */
 export const ProjectStory = ({ project }: { project: Project }) => {
   const { approach, gallery, showcase, quote, live } = project;
@@ -47,7 +59,7 @@ export const ProjectStory = ({ project }: { project: Project }) => {
       <div className={cn(container, section, "grid gap-20 md:gap-28")}>
         <Chapter title="The situation">
           <p className={lede} data-reveal="unblur">
-            {project.situation}
+            <Accent text={project.situation} />
           </p>
         </Chapter>
 
@@ -78,7 +90,7 @@ export const ProjectStory = ({ project }: { project: Project }) => {
           ) : (
             <>
               <p className={lede} data-reveal="unblur">
-                {approach.summary}
+                <Accent text={approach.summary} />
               </p>
               <ul className="mt-12 divide-y md:mt-16">
                 {approach.choices.map(({ title, detail }) => (
@@ -137,7 +149,7 @@ export const ProjectStory = ({ project }: { project: Project }) => {
 
         <Chapter title="The outcome">
           <p className={lede} data-reveal="unblur">
-            {project.outcome}
+            <Accent text={project.outcome} />
           </p>
           {quote && (
             <figure className="mt-10 max-w-2xl" data-reveal="unblur">
