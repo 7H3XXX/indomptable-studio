@@ -119,7 +119,7 @@ export const ProjectStory = ({ project }: { project: Project }) => {
             sizes="(min-width: 640px) 50vw, 100vw"
           />
           <Frame
-            className="aspect-4/5 sm:mt-24"
+            className={cn("aspect-4/5")}
             photo={right}
             sizes="(min-width: 640px) 50vw, 100vw"
           />
