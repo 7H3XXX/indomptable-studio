@@ -78,7 +78,7 @@ export const InquiryForm = () => {
         >
           Thank you, {form.getValues("name").split(" ")[0]}.
         </h3>
-        <p className="mt-5 max-w-sm text-foreground/70 text-lg/relaxed">
+        <p className="mt-5 text-foreground/70 text-lg/relaxed">
           We will read this closely and reply within one working day with a few
           questions and times for a call.
         </p>
