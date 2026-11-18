@@ -28,10 +28,7 @@ export const Hero = () => (
       />
 
       <div className="md:col-span-4 md:pb-2">
-        <p
-          className="max-w-md text-pretty text-foreground/75 text-lg/relaxed"
-          data-reveal="unblur"
-        >
+        <p className="max-w-md text-pretty text-foreground/75 text-lg/relaxed">
           We build websites, platforms, AI workflows and data systems for
           established companies whose digital side has fallen behind the
           business.
