@@ -2,6 +2,7 @@ import type { StaticImageData } from "next/image";
 import cover from "@/assets/enterprise-ui/cover.jpg";
 import hero from "@/assets/enterprise-ui/hero.webp";
 import renderHero from "@/assets/enterprise-ui/render-hero.webp";
+import enterpriseShare from "@/assets/enterprise-ui/share.jpg";
 import pricing from "@/assets/enterprise-ui/spotlight-pricing.webp";
 import tabs from "@/assets/enterprise-ui/spotlight-tabs.webp";
 import stacking from "@/assets/enterprise-ui/stacking-cards.webp";
@@ -9,6 +10,7 @@ import cells from "@/assets/gedrepacam/cells.webp";
 import donate from "@/assets/gedrepacam/donate.webp";
 import gedrepacam from "@/assets/gedrepacam/home.webp";
 import ourStory from "@/assets/gedrepacam/our-story.webp";
+import gedrepacamShare from "@/assets/gedrepacam/share.jpg";
 import strategicPlan from "@/assets/gedrepacam/strategic-plan.webp";
 import understanding from "@/assets/gedrepacam/understanding.webp";
 
@@ -35,6 +37,8 @@ export interface Project {
   alt: string;
   /** The home page card picture, when it isn't the intro image. */
   card?: Photo;
+  /** A 1200 by 630 crop of the image, for link previews. */
+  share?: Source;
   /** An opaque background for the home page card, and its text color. */
   theme: string;
   /** The page title, when "title for a sector" doesn't read. */
@@ -61,6 +65,7 @@ export const projects: Project[] = [
       "Our own library of production-ready React blocks on shadcn and Base UI, for builders and teams who ship trust.",
     services: ["Product", "Design", "Engineering"],
     image: cover,
+    share: enterpriseShare,
     alt: "Hero, pricing, testimonial and feature blocks from Enterprise UI, laid out side by side",
     theme: "bg-primary text-primary-foreground",
     searchTitle: "Enterprise UI, production-ready React blocks",
@@ -123,6 +128,7 @@ export const projects: Project[] = [
       "The first website of Cameroon's sickle cell study group, built to bring in partners, get families screened and show the science behind the cause.",
     services: ["Brand", "Website", "Content"],
     image: gedrepacam,
+    share: gedrepacamShare,
     alt: "The GEDREPACAM home page, a mother holding her child beside the headline",
     card: {
       src: cells,

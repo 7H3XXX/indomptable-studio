@@ -27,10 +27,10 @@ const pageTitle = (project: Project) =>
   project.searchTitle ??
   `${project.title} for a ${project.sector.toLowerCase()}`;
 
-const shareImage = ({ image }: Project) =>
-  typeof image === "string"
-    ? projectImage(image, 1200, 630)
-    : new URL(image.src, url).href;
+const shareImage = ({ image, share = image }: Project) =>
+  typeof share === "string"
+    ? projectImage(share, 1200, 630)
+    : new URL(share.src, url).href;
 
 export async function generateMetadata({
   params,
