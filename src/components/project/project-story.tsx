@@ -57,7 +57,7 @@ export const ProjectStory = ({ project }: { project: Project }) => {
   return (
     <section className="light">
       <div className={cn(container, section, "grid gap-20 md:gap-28")}>
-        <Chapter title="The situation">
+        <Chapter title="The situation" bordered={false}>
           <p className={lede} data-reveal="unblur">
             <Accent text={project.situation} />
           </p>
