@@ -20,8 +20,8 @@ export const Work = () => (
           className="max-w-md text-foreground/70 text-lg/relaxed md:col-span-4 md:col-start-9"
           data-reveal="unblur"
         >
-          Three mandates across banking, retail and health. Different markets,
-          the same five steps, starting with an honest audit.
+          From our own React library to Cameroon's fight against sickle cell.
+          Different markets, the same five steps, starting with an honest audit.
         </p>
       </div>
 
