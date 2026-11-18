@@ -5,6 +5,11 @@ import renderHero from "@/assets/enterprise-ui/render-hero.webp";
 import pricing from "@/assets/enterprise-ui/spotlight-pricing.webp";
 import tabs from "@/assets/enterprise-ui/spotlight-tabs.webp";
 import stacking from "@/assets/enterprise-ui/stacking-cards.webp";
+import donate from "@/assets/gedrepacam/donate.webp";
+import gedrepacam from "@/assets/gedrepacam/home.webp";
+import ourStory from "@/assets/gedrepacam/our-story.webp";
+import strategicPlan from "@/assets/gedrepacam/strategic-plan.webp";
+import understanding from "@/assets/gedrepacam/understanding.webp";
 
 /** An Unsplash photo id, or a screenshot of our own work. */
 export type Source = string | StaticImageData;
@@ -105,6 +110,65 @@ export const projects: Project[] = [
       {
         src: tabs,
         alt: "The Spotlight Tabs block, a mountain photo framed by its tabs",
+      },
+    ],
+  },
+  {
+    slug: "gedrepacam",
+    sector: "Public health",
+    title: "GEDREPACAM",
+    description:
+      "The first website of Cameroon's sickle cell study group, built to bring in partners, get families screened and show the science behind the cause.",
+    services: ["Brand", "Website", "Content"],
+    image: gedrepacam,
+    alt: "The GEDREPACAM home page, a mother holding her child beside the headline",
+    theme: "bg-foreground text-background",
+    searchTitle: "GEDREPACAM website, sickle cell in Cameroon",
+    situation:
+      "Doctors and researchers screening newborns for sickle cell across Cameroon, *with no website*. Their work lived in social posts, out of reach of the funders they needed and the families they serve.",
+    approach: {
+      summary:
+        "The website of a *scientific institution*, written for three readers at once. Families who need answers, health professionals who need protocols, partners who need proof.",
+      choices: [
+        {
+          title: "Expertise before emotion",
+          detail:
+            "Named sources and real figures, so a funder trusts the numbers.",
+        },
+        {
+          title: "Every page ends on an action",
+          detail:
+            "Get screened, give, partner. Nobody leaves without a next step.",
+        },
+        { title: "Designed to be easily edited", detail: "The team can keep the site current without us." },
+        {
+          title: "SEO & GEO ready",
+          detail: "Facts set out for search results and AI answers.",
+        },
+        { title: "Available in two languages", detail: "English and French, official Cameroon languages." },
+      ],
+    },
+    outcome:
+      "The cause finally has *one home*, for the families it protects and the partners it needs.",
+    live: "https://gedrepacam.cm",
+    gallery: [
+      {
+        src: ourStory,
+        alt: "The Our story page, headed Since 2012, in the fight against sickle cell in Cameroon",
+      },
+      {
+        src: understanding,
+        alt: "The Understanding sickle cell page, over a close view of red blood cells",
+      },
+      {
+        src: strategicPlan,
+        alt: "The page on Cameroon's first national strategic plan against sickle cell",
+      },
+    ],
+    showcase: [
+      {
+        src: donate,
+        alt: "The donation page, headed Your gift changes the course of a life",
       },
     ],
   },
