@@ -7,8 +7,10 @@ import { email, links } from "@/lib/site";
 import { container, serif } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 
+// The hit area reaches into the gap between links, so a tap lands without
+// spacing the list out.
 const linkClassName =
-  "text-foreground/65 transition-colors hover:text-foreground";
+  "relative text-foreground/65 transition-colors after:absolute after:-inset-y-1 after:-inset-x-1 hover:text-foreground";
 
 export const Footer = () => (
   <footer className="overflow-hidden">
