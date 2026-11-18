@@ -62,7 +62,7 @@ export const projects: Project[] = [
     sector: "Developer tools",
     title: "Enterprise UI",
     description:
-      "Our own library of production-ready React blocks on shadcn and Base UI, for builders and teams who ship trust.",
+      "Our own library of production-ready React blocks on shadcn and Base UI, accessible and responsive from the start, for builders and teams who ship trust.",
     services: ["Product", "Design", "Engineering"],
     image: cover,
     share: enterpriseShare,
