@@ -85,7 +85,9 @@ export const Work = () => (
                     alt={alt}
                     className={cn("object-cover", tone(image))}
                     fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
+                    // Cover scales a wide picture to the card height, so it
+                    // renders about 1024px wide whatever the box. Ask for that.
+                    sizes="(min-width: 768px) 1024px, 100vw"
                     src={projectImage(image, 1400)}
                   />
                 </div>
