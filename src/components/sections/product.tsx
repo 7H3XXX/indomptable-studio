@@ -37,6 +37,7 @@ export const Product = () => (
             target="_blank"
           >
             <Roll>Explore Enterprise UI</Roll>
+            <span className="sr-only">(opens in a new tab)</span>
           </Link>
         </div>
       </div>

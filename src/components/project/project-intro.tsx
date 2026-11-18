@@ -71,6 +71,7 @@ export const ProjectIntro = ({ project }: { project: Project }) => (
               target="_blank"
             >
               {new URL(project.live).host}
+              <span className="sr-only">(opens in a new tab)</span>
             </a>
           </dd>
         </div>

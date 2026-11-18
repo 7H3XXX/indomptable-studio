@@ -176,6 +176,7 @@ export const ProjectStory = ({ project }: { project: Project }) => {
                 target="_blank"
               >
                 <Roll>{`Visit ${project.title}`}</Roll>
+                <span className="sr-only">(opens in a new tab)</span>
               </Link>
             )}
           </div>
