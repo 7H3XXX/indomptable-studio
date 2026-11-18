@@ -35,6 +35,7 @@ export const Work = () => (
             services,
             image,
             alt,
+            card = { src: image, alt },
             theme,
           }) => (
             // From md up every card has the same height and sticks at the same
@@ -82,13 +83,13 @@ export const Work = () => (
               <div className="p-3 pt-0 md:p-4 md:ps-0">
                 <div className="relative aspect-2/1 overflow-hidden md:aspect-auto md:h-full">
                   <Image
-                    alt={alt}
-                    className={cn("object-cover", tone(image))}
+                    alt={card.alt}
+                    className={cn("object-cover", tone(card.src))}
                     fill
                     // Cover scales a wide picture to the card height, so it
                     // renders about 1024px wide whatever the box. Ask for that.
                     sizes="(min-width: 768px) 1024px, 100vw"
-                    src={projectImage(image, 1400)}
+                    src={projectImage(card.src, 1400)}
                   />
                 </div>
               </div>

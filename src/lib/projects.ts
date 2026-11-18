@@ -5,6 +5,7 @@ import renderHero from "@/assets/enterprise-ui/render-hero.webp";
 import pricing from "@/assets/enterprise-ui/spotlight-pricing.webp";
 import tabs from "@/assets/enterprise-ui/spotlight-tabs.webp";
 import stacking from "@/assets/enterprise-ui/stacking-cards.webp";
+import cells from "@/assets/gedrepacam/cells.webp";
 import donate from "@/assets/gedrepacam/donate.webp";
 import gedrepacam from "@/assets/gedrepacam/home.webp";
 import ourStory from "@/assets/gedrepacam/our-story.webp";
@@ -32,6 +33,8 @@ export interface Project {
   services: string[];
   image: Source;
   alt: string;
+  /** The home page card picture, when it isn't the intro image. */
+  card?: Photo;
   /** An opaque background for the home page card, and its text color. */
   theme: string;
   /** The page title, when "title for a sector" doesn't read. */
@@ -121,6 +124,10 @@ export const projects: Project[] = [
     services: ["Brand", "Website", "Content"],
     image: gedrepacam,
     alt: "The GEDREPACAM home page, a mother holding her child beside the headline",
+    card: {
+      src: cells,
+      alt: "Red and orange spheres floating close together, like blood cells",
+    },
     theme: "bg-foreground text-background",
     searchTitle: "GEDREPACAM website, sickle cell in Cameroon",
     situation:
