@@ -146,12 +146,18 @@ export const projects: Project[] = [
           detail:
             "Get screened, give, partner. Nobody leaves without a next step.",
         },
-        { title: "Designed to be easily edited", detail: "The team can keep the site current without us." },
+        {
+          title: "Designed to be easily edited",
+          detail: "The team can keep the site current without us.",
+        },
         {
           title: "SEO & GEO ready",
           detail: "Facts set out for search results and AI answers.",
         },
-        { title: "Available in two languages", detail: "English and French, official Cameroon languages." },
+        {
+          title: "Available in two languages",
+          detail: "English and French, official Cameroon languages.",
+        },
       ],
     },
     outcome:
