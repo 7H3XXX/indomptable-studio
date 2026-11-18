@@ -34,7 +34,7 @@ export const services: Service[] = [
     title: "Commerce platforms",
     description:
       "E-commerce and marketplace builds designed around conversion, and around the customers who come back.",
-    image: "photo-1556742049-0cfed4f6a45d",
+    image: "photo-1556742111-a301076d9d18",
   },
   {
     title: "Software integration",
